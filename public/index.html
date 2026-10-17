@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fast Video — Thay ảnh vào video mẫu</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header>
+  <h1>Fast Video</h1>
+  <span class="sub">Giữ nguyên mp3 &amp; độ dài video mẫu</span>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="panel-head">
+      <h2>1 · Video mẫu</h2>
+      <button id="uploadBtn" class="ghost">+ Thêm video mẫu</button>
+      <input id="uploadInput" type="file" accept="video/*" hidden multiple />
+    </div>
+    <div id="templateList" class="grid"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>2 · Ảnh</h2>
+      <span id="imageCount" class="count"></span>
+    </div>
+
+    <div id="dropzone" class="dropzone">
+      <input id="imageInput" type="file" accept="image/*" hidden multiple />
+      <p class="dz-main">Kéo thả nhiều ảnh vào đây</p>
+      <p class="dz-sub">hoặc bấm để chọn · JPG / PNG / WEBP · mỗi ảnh ra 1 video</p>
+      <div id="imagePreview" class="thumbs hidden"></div>
+    </div>
+
+    <div class="options">
+      <label>
+        Chế độ ảnh
+        <select id="fit">
+          <option value="cover">Lấp đầy (khung video)</option>
+          <option value="contain">Vừa khung (nền đen)</option>
+          <option value="blur">Lấp đầy + nền mờ</option>
+        </select>
+      </label>
+      <label>
+        Kích thước
+        <select id="size">
+          <option value="auto">Theo video mẫu</option>
+          <option value="1080x1920">1080 × 1920 (dọc)</option>
+          <option value="1080x1350">1080 × 1350</option>
+          <option value="1080x1080">1080 × 1080 (vuông)</option>
+          <option value="1920x1080">1920 × 1080 (ngang)</option>
+        </select>
+      </label>
+      <label class="grow">
+        Nơi lưu video
+        <div class="folder-row">
+          <input id="folderName" class="text-input" readonly placeholder="Chưa chọn thư mục" />
+          <button id="pickFolder" class="ghost">Chọn thư mục</button>
+        </div>
+      </label>
+    </div>
+
+    <button id="renderBtn" class="primary">Render video</button>
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="panel">
+    <h2>3 · Kết quả</h2>
+    <div id="result" class="result empty">Chưa có kết quả</div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
